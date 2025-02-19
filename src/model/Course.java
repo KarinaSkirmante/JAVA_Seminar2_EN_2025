@@ -1,5 +1,7 @@
 package model;
 
+
+
 public class Course {
 	//1.variables
 	private long cId;
@@ -31,8 +33,35 @@ public class Course {
     	cId = counter++;
     }
 	
+    public void setTitle(String inputTitle) {
+    	if(inputTitle != null && inputTitle.matches("[A-Za-z ()]{4,40}")) {
+    		title = inputTitle;
+    	}
+    	else
+    	{
+    		title = "No title";
+    	}
+    }
     
+    public void setCreditPoints(int inputCreditPoints) {
+    	if(inputCreditPoints > 0 && inputCreditPoints <= 30) {
+    		creditPoints = inputCreditPoints;
+    	}
+    	else
+    	{
+    		creditPoints = 3;
+    	}
+    }
     
+    public void setProfessor(Professor inputProfessor) {
+    	if(inputProfessor != null) {
+    		professor = inputProfessor;
+    	}
+    	else
+    	{
+    		professor = new Professor();//it will link default professor from Professor class
+    	}
+    }
     
 
 	//4. default cons
