@@ -2,8 +2,8 @@ package model;
 
 public class Person {
 	//1. variables
-	private String name;
-	private String surname;
+	protected String name;
+	protected String surname;
 	
 	//2.getters
 	public String getName() {

@@ -1,6 +1,6 @@
 package model;
 
-public class Student {
+public class Student extends Person{
 	//1. variables
 	private long stID;
 
@@ -25,24 +25,23 @@ public class Student {
 
 	//4. default constructor
 	public Student() {
+		super();//no argument constructor from Person class will be called
 		setStID();
-		setName("Test");
-		setSurname("Student");
+
 	}
 	
 	
 	//5. argument constructor
 	public Student(String inputName, String inputSurname) {
+		super(inputName, inputSurname);//argument constructor from person class will be called
 		setStID();
-		setName(inputName);
-		setSurname(inputSurname);
 	}
 	
 
 	//6. toString function	
 	public String toString()
 	{
-		return stID + ": " + name + " " + surname;
+		return stID + ": " + super.toString();//Person class toString function
 	}
 	
 	
