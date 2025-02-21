@@ -85,7 +85,7 @@ public class MainService {
 	}
 	
 	//CRUD - C - create; R - retrieve; U - update; D - delete
-	
+	//C - create
 	public static void createProfessor(String name, String surname, Degree degree) throws Exception {
 		if(name == null || surname == null || degree == null) {
 			throw  new Exception("Input params can not be null");
@@ -106,6 +106,23 @@ public class MainService {
 		
 	}
 	
+	//R - retrieve
+	public static Professor retrieveProfessorById(long id) throws Exception{
+		if(id < 10000)
+		{
+			throw new Exception("Id should be positive and larger or equals that 10000");
+		}
+		
+		for(Professor tempP : allProfessors )
+		{
+			if(tempP.getpId() == id) {
+				return tempP;
+			}
+		}
+		
+		throw new Exception("Professor is not found");
+		
+	}
 	
 	
 
