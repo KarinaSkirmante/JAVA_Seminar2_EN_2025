@@ -18,6 +18,8 @@ public class MainService {
 	
 	
 	public static void main(String[] args) {
+		
+		System.out.println("-------------------STUDENTS------------------");
 		Student st1 = new Student();
 		//System.out.println(st1.toString());//we can use without toString() because it will be called by default here
 
@@ -35,7 +37,7 @@ public class MainService {
 
 		
 		
-		
+		System.out.println("-------------------PROFESSORS------------------");
 		
 		Professor p1 = new Professor();
 		//System.out.println(p1);
@@ -43,7 +45,19 @@ public class MainService {
 		Professor p2 = new Professor("Karina", "Skirmante", Degree.mg );
 		//System.out.println(p2);
 		allProfessors.addAll(Arrays.asList(p1, p2));
+		try
+		{
+			createProfessor("Estere", "Vitola", Degree.mg);
+			createProfessor("Estere", "Vitola", Degree.mg);//exception will be throw
+			createProfessor("Karlis", "Immers", Degree.mg);//if there will be a duplicate before, this code line will be skipped
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		
 		System.out.println(allProfessors);
+		
+		System.out.println("-------------------COURSE------------------");
 		
 		Course c1 = new Course();
 		//System.out.println(c1);
@@ -56,6 +70,9 @@ public class MainService {
 		allCourses.addAll(Arrays.asList(c1, c2, c3));
 		System.out.println(allCourses);
 		
+		
+		System.out.println("-------------------GRADE------------------");
+		
 		Grade g1 = new Grade();
 		//System.out.println(g1);
 		
@@ -66,5 +83,30 @@ public class MainService {
 		System.out.println(allGrades);
 		
 	}
+	
+	//CRUD - C - create; R - retrieve; U - update; D - delete
+	
+	public static void createProfessor(String name, String surname, Degree degree) throws Exception {
+		if(name == null || surname == null || degree == null) {
+			throw  new Exception("Input params can not be null");
+		}
+		
+		
+		for(Professor tempP : allProfessors) {
+			if(tempP.getName().equals(name)
+					&& tempP.getSurname().equals(surname)
+					&& tempP.getDegree().equals(degree))
+			{
+				throw new Exception("This professor is already registered in the system");
+			}
+		}
+		
+		allProfessors.add(new Professor(name, surname, degree));
+		
+		
+	}
+	
+	
+	
 
 }
