@@ -3,8 +3,7 @@ package model;
 public class Student {
 	//1. variables
 	private long stID;
-	private String name;
-	private String surname;
+
 	
 	private static long counter = 0;
 	
@@ -12,12 +11,7 @@ public class Student {
 	public long getStID() {
 		return stID;
 	}
-	public String getName() {
-		return name;
-	}
-	public String getSurname() {
-		return surname;
-	}
+
 	//3. setters
 	
 	public void setStID() {
@@ -26,25 +20,7 @@ public class Student {
 	}
 	
 	
-	public void setName(String inputName) {
-		if(inputName!=null && inputName.matches("[A-Z]{1}[a-z]{3,15}")) {
-			name = inputName;
-		}
-		else
-		{
-			name = "No name";
-		}
-	}
 	
-	public void setSurname(String inputSurname) {
-		if(inputSurname !=null && inputSurname.matches("[A-Z]{1}[a-z]{3,30}")) {
-			surname = inputSurname;
-		}
-		else
-		{
-			surname = "No surname";
-		}
-	}
 		
 
 	//4. default constructor
