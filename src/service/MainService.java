@@ -53,8 +53,9 @@ public class MainService {
 			System.out.println(allProfessors);//Test Karina Estere Karlis
 			System.out.println("Retrieve example: " + retrieveProfessorById(10001));//Karina
 			updateProfessorById(10000, "Vairis", "Caune", Degree.dr);
-			System.out.println("Arrayslist after update: " + allProfessors );//Vairis Karina Estere Karlis
-		
+			System.out.println("Arrayslist after update f.: " + allProfessors );//Vairis Karina Estere Karlis
+			deletProfessorById(10002);
+			System.out.println("ArrayList after delete f.: " + allProfessors);//Estere shoudl not be in the arraylist
 		}
 		catch (Exception e) {
 			System.out.println(e);
@@ -151,9 +152,15 @@ public class MainService {
 		
 	}
 
-	//check id
-	//need to find professor
-	//set the new values for name, surname, degree
+	//D - delete
+	//function definition
+	public static void deletProfessorById(int id) throws Exception {
+		Professor foundProfessor = retrieveProfessorById(id);
+		allProfessors.remove(foundProfessor);
+	
+	}
+
+	
 	
 
 }
