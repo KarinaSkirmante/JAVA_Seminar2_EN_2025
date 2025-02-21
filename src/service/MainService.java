@@ -56,6 +56,7 @@ public class MainService {
 			System.out.println("Arrayslist after update f.: " + allProfessors );//Vairis Karina Estere Karlis
 			deletProfessorById(10002);
 			System.out.println("ArrayList after delete f.: " + allProfessors);//Estere shoudl not be in the arraylist
+			System.out.println("Professors with dr: " + filterProfessorsByDegree(Degree.dr));
 		}
 		catch (Exception e) {
 			System.out.println(e);
@@ -160,6 +161,36 @@ public class MainService {
 	
 	}
 
+	//TODO
+	//filter out every professor which degree is dr
+	public static ArrayList<Professor> filterProfessorsByDegree(Degree degree) throws Exception{
+		if(degree == null) {
+			throw new Exception("The degree is null");
+		}
+		
+		ArrayList<Professor> results = new ArrayList<Professor>();
+		
+		for(Professor tempP : allProfessors)
+		{
+			if(tempP.getDegree().equals(degree))
+			{
+				results.add(tempP);
+			}
+		}
+		
+		
+		return results;
+		
+		
+		
+	}
+	
+	
+	//filter out every failed grade
+	//calculate average grade for specific student
+	//find out the max creditPoint value that is stored in the system
+	//calculate average grade in specific course
+	
 	
 	
 
