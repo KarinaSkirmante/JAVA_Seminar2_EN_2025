@@ -1,6 +1,6 @@
 package model;
 
-public class Professor {
+public class Professor extends Person{
 	//1.variables
 	private long pId;
 
@@ -43,23 +43,21 @@ public class Professor {
 
 	//4.default constructor
 	public Professor() {
+		super();//no arg.constructor from Person class
 		setPID();
-		setName("Test");
-		setSurname("Professor");
 		setDegree(Degree.bsc);
 	}
 	//5.args constructor
 	public Professor(String inputName, String inputSurname, Degree inputDegree)
 	{
+		super(inputName, inputSurname);//argument constructor from person class
 		setPID();
-		setName(inputName);
-		setSurname(inputSurname);
 		setDegree(inputDegree);
 	}
 	
 	//6.toString
 	public String toString() {
-		return pId + ": " + degree + " " + name + " " + surname ;
+		return pId + ": " + degree + " " + super.toString() ;
 	}
 	
 	
