@@ -84,11 +84,19 @@ public class MainService {
 		//System.out.println(g1);
 		
 		Grade g2 = new Grade(4, st2, c2);//4 -> John Green -> JAVA
+		Grade g3 = new Grade(7, st2, c1);//7 -> John Green -> Test Course
 		//System.out.println(g2);
 		
-		allGrades.addAll(Arrays.asList(g1, g2));
+		allGrades.addAll(Arrays.asList(g1, g2, g3));
 		System.out.println(allGrades);
 		System.out.println("Failed grades: " + filterFailedGrades());
+		
+		try {
+			System.out.println("Avg grade for student Jonh: " + calculateAvgGradeForStudentById(1));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -211,6 +219,11 @@ public class MainService {
 				sum = sum + tempG.getGrValue();
 			}
 		}
+		
+		if(howManyGrades == 0) {
+			throw new Exception("Student with id " + id + " hasn't any grades");
+		}
+		
 		float avg = sum/howManyGrades;
 		return avg;
 		
