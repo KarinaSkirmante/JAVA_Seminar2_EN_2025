@@ -88,6 +88,7 @@ public class MainService {
 		
 		allGrades.addAll(Arrays.asList(g1, g2));
 		System.out.println(allGrades);
+		System.out.println("Failed grades: " + filterFailedGrades());
 		
 	}
 	
@@ -176,21 +177,49 @@ public class MainService {
 			{
 				results.add(tempP);
 			}
-		}
-		
-		
-		return results;
-		
-		
-		
+		}		
+		return results;	
 	}
 	
 	
 	//filter out every failed grade
+	public static ArrayList<Grade> filterFailedGrades(){
+		
+		ArrayList<Grade> results = new ArrayList<Grade>();
+		
+		for(Grade tempG: allGrades) {
+			if(tempG.getGrValue() < 4) {
+				results.add(tempG);
+			}
+		}
+		
+		return results;
+	}
+	
 	//calculate average grade for specific student
+	public static float calculateAvgGradeForStudentById(int id) throws Exception {
+		if(id < 0) {
+			throw new Exception("Id is negative");
+		}
+		
+		int howManyGrades = 0;
+		float sum = 0;
+		
+		for(Grade tempG: allGrades) {
+			if(tempG.getStudent().getStID() == id) {
+				howManyGrades++;
+				sum = sum + tempG.getGrValue();
+			}
+		}
+		float avg = sum/howManyGrades;
+		return avg;
+		
+	}
+	
+	
 	//find out the max creditPoint value that is stored in the system
 	//calculate average grade in specific course
-	
+	//calculate how many courses are lead by specific professor
 	
 	
 
